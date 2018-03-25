@@ -1,4 +1,4 @@
-from neuralnet_final import neuralnet as nn
+from neuralnet_final import neuralnet
 import numpy as np
 
 def test_nn_autoencoder():
@@ -16,14 +16,14 @@ def test_nn_autoencoder():
 
     out_test_list_1 = []
     out_test_list_2 = []
-    NN = net.neural_network(4,8,1)
+    nn = neuralnet.neuralnet(4,8,1)
 
     for i in range(0,5):
         nn.__init__(8,3,8)
         nn.train(X,y,10000,20,0)
         out_test_1 = nn.forward(Xtest_pos)
         out_test_list_1.append(out_test_1)
-        out_test_2 = NN.forward(Xtest_neg)
+        out_test_2 = nn.forward(Xtest_neg)
         out_test_list_2.append(out_test_2)
 
     assert np.average(out_test_list_1) > 0.9 and np.average(out_test_list_2) < 0.1
