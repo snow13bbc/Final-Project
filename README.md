@@ -43,7 +43,7 @@ Options:
 Testing is as simple as running
 
 ```
-python -m nn_test
+python -m test
 ```
 
 from the root directory of this project.
