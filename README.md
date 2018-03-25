@@ -44,7 +44,8 @@ Options:
 Testing is as simple as running
 
 ```
-python -m test
+python -m pytest -v test/*
+
 ```
 
 from the root directory of this project.
