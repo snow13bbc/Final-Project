@@ -13,8 +13,8 @@ Example python project with testing.
 To use the package, first make a new conda environment and activate it
 
 ```
-conda create -n exampleenv python=3
-source activate exampleenv
+conda create -n ann_env python=3
+source activate ann_env
 ```
 
 then run
@@ -30,6 +30,7 @@ main function (located in `neuralnet_final/__main__.py`) can be run as follows. 
 python -m neuralnet_final
 ```
 Options:
+
 '-i <#>' or '--iter <#>' for number of iterations
 '-a <#>' or '--alpha <#>' to set value for alpha
 '-l <#>' or '--lambda <#>' to set lambda value
