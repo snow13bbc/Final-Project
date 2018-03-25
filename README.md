@@ -2,9 +2,9 @@
 Neural Net - Distinguishing binding sites of a transcription factor, RAP1
 
 [![Build
-Status](https://travis-ci.org/snow13bbc/bmi203-final.svg?branch=master)](https://travis-ci.org/snow13bbc/example)
+Status](https://travis-ci.org/snow13bbc/Final-Project.svg?branch=master)](https://travis-ci.org/snow13bbc/Final-Project)
 
-Travis - https://travis-ci.org/snow13bbc/bmi203-final
+Travis - https://travis-ci.org/snow13bbc/Final-Project
 
 Example python project with testing.
 
