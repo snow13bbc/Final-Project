@@ -2,7 +2,7 @@ from .neuralnet import neuralnet
 from .io import *
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn import metrics
+from sklearn.metrics import roc_curve, auc
 from itertools import cycle
 from optparse import OptionParser
 from itertools import cycle
@@ -50,11 +50,11 @@ neg_d = neg_vec[3*avgK:4*avgK]
 neg_e = neg_vec[4*avgK:]
 neg_list =[neg_a,neg_b,neg_c,neg_d,neg_e]
 #Creating prediction output datasets
-yhat_a = np.ones((neg_a.shape[0],1))
-yhat_b = np.ones((neg_b.shape[0],1))
-yhat_c = np.ones((neg_c.shape[0],1))
-yhat_d = np.ones((neg_d.shape[0],1))
-yhat_e = np.ones((neg_e.shape[0],1))
+yhat_a = np.zeros((neg_a.shape[0],1))
+yhat_b = np.zeros((neg_b.shape[0],1))
+yhat_c = np.zeros((neg_c.shape[0],1))
+yhat_d = np.zeros((neg_d.shape[0],1))
+yhat_e = np.zeros((neg_e.shape[0],1))
 yhat_list = [yhat_a,yhat_b,yhat_c,yhat_d,yhat_e]
 
 #Initializing Neural network
@@ -68,11 +68,12 @@ if options.operationtype == True:
     yhat = np.concatenate(yhat_list)
     Xtrain = np.concatenate((pos,neg))
     ytrain = np.concatenate((y,yhat))
-    y_hat = nn.train_stochastic(Xtrain,ytrain,options.iter,options.alpha,options.lam, pos.shape[0],neg.shape[0])
+    y_hat = nn.train_stochastic(Xtrain,ytrain,100,10,0, pos.shape[0],neg.shape[0])
 
     #Generating ROC curve.
-    fpr,tpr,thresholds = metrics.roc_curve(ytrain,y_hat)
-    roc_auc = metrics.auc(fpr,tpr)
+    fpr,tpr, treshold = roc_curve(ytrain,y_hat, pos_label=1) # This is for regular ROC
+    plt.figure()
+    roc_auc = auc(fpr,tpr)
 
     plt.plot(fpr,tpr,color = 'black',lw = 2,label = 'ROC curve (area = {})'.format(roc_auc))
     plt.plot([0,1],[0,1],'k--',lw=2)

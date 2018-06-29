@@ -45,7 +45,7 @@ class neuralnet(object):
         '''
         J tells you what the difference is between the predicted and actual result.
         Compute cost for given X,y, use weights already stored in class.
-        To avoid overfitting, we add a regularization paramter, lam to our cost function.
+        To avoid overfitting, I add a regularization paramter, lam to our cost function.
         The higher the lam value, the bigger the penalties impose.
 
         '''
@@ -166,7 +166,7 @@ class neuralnet(object):
         db1 += dJdb1
         db2 += dJdb2
 
-        # And finally, update the weight and bias matrices. 
+        # And finally, update the weight and bias matrices.
         self.W1 = self.W1 - new_alpha*(((1/m) * dW1) + lam * self.W1)
         self.W2 = self.W2 - new_alpha*(((1/m) * dW2) + lam * self.W2)
         self.bias1 = self.bias1 - new_alpha*((1/m) * db1)
